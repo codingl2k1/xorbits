@@ -62,6 +62,7 @@ import numpy as np
 import pandas as pd
 import pyarrow as pa
 from xoscar._utils import (
+    NamedType,
     TypeDispatcher,
     new_random_id,
     reset_id_random_seed,
@@ -71,7 +72,6 @@ from xoscar._utils import (
 
 from ._utils import (  # noqa: F401 # pylint: disable=unused-import
     CUnionFind,
-    NamedType,
     Timer,
     ceildiv,
     register_tokenizer,

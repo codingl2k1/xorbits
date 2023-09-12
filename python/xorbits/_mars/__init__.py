@@ -25,14 +25,15 @@ del init_extension_entrypoints
 
 __version__ = _version.get_versions()["version"]
 
-from xoscar.serialization.pyfury import register_classes, get_fury
+from xoscar.serialization.pyfury import get_fury, register_classes
 
 fury = get_fury()
 if fury is not None:
     print("register class for fury.")
     import pandas as pd
-    from .core.graph import ChunkGraph
+
     from .core.entity import Chunk, ChunkData, Tileable, TileableData
+    from .core.graph import ChunkGraph
 
     register_classes(
         pd.Index,
