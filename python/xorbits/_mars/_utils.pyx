@@ -33,7 +33,6 @@ import pandas as pd
 from cpython cimport PyBytes_FromStringAndSize
 from libc.stdint cimport uint8_t, uint32_t
 from xoscar._utils cimport TypeDispatcher, to_binary, to_str
-from xoscar.serialization.pyfury import register_classes, get_fury
 
 try:
     from pandas.tseries.offsets import Tick as PDTick
@@ -333,12 +332,6 @@ if _has_sqlalchemy:
         "sqlalchemy.sql.Selectable", tokenize_sqlalchemy_selectable
     )
 
-fury = get_fury()
-if fury is not None:
-    from .core.graph import ChunkGraph
-    from .core.entity import Chunk, ChunkData, Tileable, TileableData
-    print("register class for fury.")
-    register_classes(pd.Index, pd.Series, pd.DataFrame, ChunkGraph, Chunk, ChunkData, Tileable, TileableData)
 
 cpdef register_tokenizer(cls, handler):
     tokenize_handler.register(cls, handler)
